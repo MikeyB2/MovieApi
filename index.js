@@ -139,7 +139,8 @@ function movieDetailResults(movie) {
 ///////////////////Get Ebay results///////////////////////////
 
 // movie.title of omdb matches ebay searchResult.item.title get searchResult.item.itemId on click
-
+// https://api.ebay.com/buy/browse/v1/item_summary/search?q={searchText}&limit=2
+// https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#w4-w1-w4-SearchforItemsbyKeyword-0
 // ebay tokens User:  MichaelB-movie-PRD-72630a405-65a0dfb8
 // Dev:  80ccc753-194c-4194-af41-70ddba9374e7
 // cert id client secret:  PRD-2630a4057ccf-f14e-494d-b752-6c89
