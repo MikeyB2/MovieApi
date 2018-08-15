@@ -1,5 +1,7 @@
 //  http://www.omdbapi.com?apikey=389ac1fa&s=
 const movie_SEARCH_URL = 'http://www.omdbapi.com?apikey=389ac1fa&';
+const ebay_SEARCH_URL = 'https://api.ebay.com/buy/browse/v1/item_summary/search?';
+
 let query = '';
 ///////////////////Get Initial search list of movies///////////////////////////
 function watchSubmit() {
@@ -41,9 +43,7 @@ function returnResults(movie) {
             <div class="card">
                 <img src="${movie.Poster}">
                 <h3>${movie.Title}</h3>
-                <a onclick="movieSelected('${
-									movie.imdbID
-								}')" class="btn btn-primary" href="#">Movie Details</a>
+                <a onclick="movieSelected('${movie.imdbID}', '${movie.Title} DVD')" class="btn btn-primary" href="#">Movie Details</a>
             </div>
           </div>
         </div>
@@ -52,9 +52,10 @@ function returnResults(movie) {
 
 ///////////////////Get Detail of selected movie///////////////////////////
 
-function movieSelected(id) {
-	console.log(id);
+function movieSelected(id, title) {
+	console.log(id, title);
 	sessionStorage.setItem('movieId', id); //stores id locally in application tab session storage
+	sessionStorage.setItem('movieTitle', title); //stores id locally in application tab session storage
 	window.location = 'movie.html';
 	return false;
 }
@@ -136,14 +137,56 @@ function movieDetailResults(movie) {
 `;
 }
 
-///////////////////Get Ebay results///////////////////////////
+///////////////////Get Movie Detail results///////////////////////////
 
-// movie.title of omdb matches ebay searchResult.item.title get searchResult.item.itemId on click
-// https://api.ebay.com/buy/browse/v1/item_summary/search?q={searchText}&limit=2
-// https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#w4-w1-w4-SearchforItemsbyKeyword-0
-// ebay tokens User:  MichaelB-movie-PRD-72630a405-65a0dfb8
-// Dev:  80ccc753-194c-4194-af41-70ddba9374e7
-// cert id client secret:  PRD-2630a4057ccf-f14e-494d-b752-6c89
-// onclick="ebayFunction('${movie.imdbID}')"
+
+function getEbayDetails() {
+	let movieTitle = sessionStorage.getItem('movieTitle');
+	const query = {
+		callname: 'FindProducts',
+		appid: 'MichaelB - movie - PRD - 72630 a405 - 65 a0dfb8',
+		q: movieTitle,
+		limit: '2',
+
+	};
+	$.getJSON(ebay_SEARCH_URL, query, buyMovieEbay);
+}
+
+function buyMovieEbay(data) {
+	console.log('test12', data);
+	const ebayMovies = ebayResults(data);
+	$('#movie').html(ebayMovies);
+	console.log('test18', ebayMovies);
+}
+
+function ebayResults(ebayData) {
+	let ebayDetail = ebayData;
+	console.log(ebayDetail);
+	return ``;
+}
+
+
+
+// goodreads apikey
+// key: FwUZbUbxGcRfnWpLfspzWA
+// secret: 2JgcP6U1d84aRcuZFQzLrwRK8DraeMurmsUC1Q0Wu8
+// "https://www.goodreads.com/search.xml?key=YOUR_KEY&q=Ender%27s+Game"
+
+// movieglu movie showtimes
+// https://developer.movieglu.com/api-index/quick-start-guide/ link to get started
+// API Endpoint :	https://api-gate.movieglu.com/
+// Username :	MOVI_18
+// API Key :	wWGXP95HyN9gg0jgE891C5DS2OuY5MXAarvKoLSL
+// Password :	QnbHvDERGQDd
+// Basic Authentication :	Basic TU9WSV8xODpRbmJIdkRFUkdRRGQ=
+// required fields below minus the geolocation
+// client: [Username]
+// x-api-key: [API Key]
+// Authorization: [Basic Authentication]
+// api-version: v102
+// Geolocation: lat;lng (Note the use of a semicolon. See documentation for further details)
+
+
+
 
 $(watchSubmit);
