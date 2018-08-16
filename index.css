@@ -1,19 +1,32 @@
-/* #movies img,
+#movies img,
 #movie img {
-    width: 100%; */
+    width: 100%; 
+/* 100% of container*/
 
-/* 100% of container */
+}
 
-/* } */
-
-/* @media (min-width: 960px) {
+@media (min-width: 490px) {
     #movies .col-md-3 .well {
         height: 390px;
     }
     #movies .col-md-3 img {
-        height: 240px; */
+        height: 240px;
 
-/*  */
+    }
+    .btn {
+        border: 1px solid blue;
+        border-radius: 5px;
+        background: #D6E3E0;
+        text-decoration: none;
+        color: black;
+    }
+    
+    .btn:hover {
+        background: #6DD8FF;
+    }
+
+}
+
 
 * {
     box-sizing: border-box;
@@ -44,7 +57,14 @@ footer {
     text-align: center;
     border: solid 2px black;
     border-radius: 10px;
-    width: 25%;
+    width: 320px;
+    height: 570px;
+    line-height: 12px;
+}
+
+.column img {
+    height: 444px;
+    width: 300px;
 }
 
 .column::after {
@@ -55,6 +75,7 @@ footer {
 
 .column h3 {
     font-size: 20px;
+    word-wrap: break-word;
 }
 
 .btn {
