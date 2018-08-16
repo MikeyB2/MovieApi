@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="float-grid.css" />
+    <!-- <link rel="stylesheet" href="float-grid.css" /> -->
     <link rel="stylesheet" href="index.css">
     <title>Movie Info</title>
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
+    <div class="header row">
+        <div class="container col-12">
             <h1 class="display-4">Search for Any Movie</h1>
             <form id="searchForm">
                 <input type="text" class="searchInput" id="searchText" placeholder="Search Movies Here....">
@@ -20,13 +20,15 @@
             </form>
         </div>
     </div>
-    <div class="container">
-        <div id="movies" class="row"></div>
+    <div class="container row">
+        <div id="movies" class="col-4"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script src="index.js"></script>
-
+    <!-- <script>
+        getTrailer();
+    </script> -->
 </body>
 
 </html>
