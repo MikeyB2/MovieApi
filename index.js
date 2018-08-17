@@ -174,7 +174,7 @@ function trailerResults(trailer) {
 	console.log(trailerDetail.items[0].id.videoId);
 	return `
 	<div class="detail-row video">
-		<iframe id="ytplayer" type="text/html" src="https://www.youtube.com/embed/${
+		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
