@@ -1,4 +1,4 @@
-const movie_SEARCH_URL = 'http://www.omdbapi.com?apikey=389ac1fa&';
+const movie_SEARCH_URL = 'https://www.omdbapi.com?apikey=389ac1fa&';
 const YOUTUBE_Trailer_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 let query = '';
