@@ -14,14 +14,18 @@ function watchSubmit() {
 	});
 }
 
+
+
 function getDataForMovies(searchText, callback) {
 	const query = {
-		s: `${searchText}`
+		s: `${searchText}`,
 	};
 	$.getJSON(movie_SEARCH_URL, query, callback);
 }
 
+
 function dataMovies(data) {
+	console.log('test');
 	const movie = data.Search.map((item, index) => displayMovies(item));
 	$('#movies').html(movie);
 }
@@ -41,10 +45,10 @@ function returnResults(movie) {
                 <h3>${movie.Title}</h3>
 								<a onclick="movieSelected('${
 		movie.imdbID
-		}')" class="btn movieDetailScreen" href="#">Movie Details</a>
+		}', '${movie.Title}')" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
 								<a onclick="youtubeTrailer('${
 		movie.Title
-		} Trailer')" class="btn trailer" href="#">Watch Trailer</a>
+		} Trailer')" class="btn trailer gridBtn" href="#">Watch Trailer</a>
           </div>
     `;
 }
@@ -54,6 +58,7 @@ function returnResults(movie) {
 function movieSelected(id, title) {
 	console.log(id, title);
 	sessionStorage.setItem('movieId', id); //stores id locally in application tab session storage
+	sessionStorage.setItem('movieTitle', title);
 	window.location = 'movie.html';
 	return false;
 }
@@ -70,6 +75,7 @@ function detailedMovie(data) {
 	const detailOfMovie = movieDetailResults(data);
 	$('#movie').html(detailOfMovie);
 }
+
 
 function movieDetailResults(movie) {
 	let movieDetail = movie;
@@ -124,13 +130,14 @@ function movieDetailResults(movie) {
 		}</li>
 		</ul>
 		<hr>
-	</div>
-	<div class="btn-group">
+		<div class="btn-group">
 	<a href="http://imdb.com/title/${
 		movieDetail.imdbID
 		}" target="_blank" class="btn">View IMDB</a>
     <a href="index.html" class="btn">Back To Search</a>
     <a href=""https://www.youtube.com/channel/UClgRkhTL3_hImCAmdLfDE4g" id="watchNow" class="btn btn-red">Watch Now</a></div>
+	</div>
+	
 </div>
 
 `;
@@ -138,17 +145,16 @@ function movieDetailResults(movie) {
 
 ///////////////////Get Movie Trailer///////////////////////////
 function youtubeTrailer(title) {
-	title.replace("'", "").replace("#", "").replace(";", "").replace(":", "");
 	console.log(title);
 	sessionStorage.setItem("trailerText", title); //stores id locally in application tab session storage
+	console.log(title);
 	getTrailer();
 	return false;
 }
 
 function getTrailer() {
 	let trailer = sessionStorage.getItem("trailerText");
-	console.log(trailer);
-	trailer.replace("'", "").replace("#", "").replace(";", "").replace(":", "");
+	console.log('test', trailer);
 	const trailerQuery = {
 		part: 'snippet',
 		key: 'AIzaSyDbDK_yKzFivQBrkukDw3lwBVsFgdDUmNY',
@@ -169,8 +175,8 @@ function trailerResults(trailer) {
 	console.log(trailerDetail);
 	console.log(trailerDetail.items[0].id.videoId);
 	return `
-	<div class="detail-row">
-		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
+	<div class="detail-row video">
+		<iframe id="ytplayer" type="text/html" src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>

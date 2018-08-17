@@ -1,17 +1,24 @@
 #movies img,
 #movie img {
-    width: 100%; 
-/* 100% of container*/
-
+    width: 100%;
+    /* 100% of container*/
 }
 
-@media (min-width: 490px) {
+@media (max-width: 220px) {
+    .container {
+        height: 100%;
+        width: 100%;
+    }
+    #movie img {
+        width: 200px;
+        height: 300px;
+        float: none;
+    }
     #movies .col-md-3 .well {
         height: 390px;
     }
     #movies .col-md-3 img {
         height: 240px;
-
     }
     .btn {
         border: 1px solid blue;
@@ -20,13 +27,48 @@
         text-decoration: none;
         color: black;
     }
-    
     .btn:hover {
         background: #6DD8FF;
     }
-
+    .video {
+        width: 320px;
+    }
 }
 
+@media (min-width: 768px) {
+    .container {
+        height: 100%;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #movies .col-md-3 .well {
+        height: 250px;
+        width: 100%;
+    }
+    #movies .col-md-3 img {
+        height: 150px;
+    }
+    .btn {
+        border: 1px solid blue;
+        border-radius: 5px;
+        background: #D6E3E0;
+        text-decoration: none;
+        color: black;
+    }
+    .btn:hover {
+        background: #6DD8FF;
+    }
+    .video {
+        width: 100%;
+    }
+    .searchForm input {
+        width: 120px;
+    }
+    .btn-group {
+        margin: 20px;
+        display: flex;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -45,26 +87,28 @@ footer {
 }
 
 .container {
-    width: 1vp;
     height: 100%;
     margin-bottom: 20px;
 }
 
 .column {
     display: inline-block;
-    padding: 15px;
     margin: 5px;
     text-align: center;
     border: solid 2px black;
     border-radius: 10px;
     width: 320px;
-    height: 570px;
+    height: 530px;
     line-height: 12px;
 }
 
 .column img {
     height: 444px;
     width: 300px;
+}
+
+.column img:hover {
+    border: solid 2px red;
 }
 
 .column::after {
@@ -74,7 +118,7 @@ footer {
 }
 
 .column h3 {
-    font-size: 20px;
+    font-size: 15px;
     word-wrap: break-word;
 }
 
@@ -90,6 +134,11 @@ footer {
 
 .btn:hover {
     background: #6DD8FF;
+    border: solid 2px red;
+}
+
+.gridBtn {
+    margin: 15px;
 }
 
 #movies {
@@ -100,8 +149,6 @@ footer {
 .row {
     padding: 20px;
     margin: auto;
-    height: 600px;
-    width: 1vp;
 }
 
 .img-list {
@@ -116,7 +163,6 @@ ul {
 
 .movie-container {
     margin: 20px 50px;
-    width: 1vp;
 }
 
 .thumbnail {
@@ -124,10 +170,29 @@ ul {
 }
 
 .detail-row {
-    border: 1px solid black;
+    display: inline-block;
 }
 
 .details-card {
     width: 25%;
     height: auto;
+}
+
+.details-card img {
+    width: 450px;
+    height: 100%;
+}
+
+.details-list {
+    text-align: start;
+}
+
+.btn-group {
+    margin: 20px;
+}
+
+#ytPlayer {
+    width: 700px;
+    height: 500px;
+    ;
 }
