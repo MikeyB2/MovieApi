@@ -1,6 +1,5 @@
 const movie_SEARCH_URL = 'http://www.omdbapi.com?apikey=389ac1fa&';
 const YOUTUBE_Trailer_URL = 'https://www.googleapis.com/youtube/v3/search';
-const YOUTUBE_MOVIE_URL = 'https://www.googleapis.com/youtube/v3/channels';
 
 let query = '';
 ///////////////////Get Initial search list of movies///////////////////////////
@@ -135,7 +134,6 @@ function movieDetailResults(movie) {
 		movieDetail.imdbID
 		}" target="_blank" class="btn">View IMDB</a>
     <a href="index.html" class="btn">Back To Search</a>
-    <a href=""https://www.youtube.com/channel/UClgRkhTL3_hImCAmdLfDE4g" id="watchNow" class="btn btn-red">Watch Now</a></div>
 	</div>
 	
 </div>
@@ -180,52 +178,6 @@ function trailerResults(trailer) {
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
-	</div>`;
-}
-
-/////////////////////////////Watch Full Movie////////////////////////////////////////
-
-function youtubeMovie(title) {
-	console.log('1', title);
-	sessionStorage.setItem('movieTitle', title); //stores id locally in application tab session storage
-	getYoutubeMovie();
-	return false;
-}
-
-function getYoutubeMovie() {
-	console.log('2', 'get movie youtube');
-	let youtubeMovieTitle = sessionStorage.getItem('movieTitle');
-	const movieQuery = {
-		id: 'UClgRkhTL3_hImCAmdLfDE4g',
-		part: 'snippet, contentDetails, statistics',
-		key: 'AIzaSyDbDK_yKzFivQBrkukDw3lwBVsFgdDUmNY',
-		// AIzaSyBiFe0gSq_xIil6nwieRBdNbOuaI69AFnk created new key
-		fields: 'items/snippet/title' + youtubeMovieTitle
-	};
-
-	$.getJSON(YOUTUBE_MOVIE_URL, movieQuery, movieLink);
-}
-
-function movieLink(data) {
-	console.log('3', 'youtube movie data');
-	console.log('4', 'testtest', data);
-	const detailOfYoutubeMove = youtubeMoveResults(data);
-	$('#movie').html(detailOfYoutubeMove);
-}
-
-function youtubeMoveResults(movie) {
-	let youtubeMovieDetail = movie;
-	console.log('5', youtubeMovieDetail);
-	// console.log('6', youtubeMovieDetail.items[0].id.videoId);
-	return `
-	<div class="detail-row">
-		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
-		youtubeMovieDetail.items[0].id.videoId
-		}?autoplay=1" frameborder='0'>
-		</iframe>
-		<div class="trailerButton">
-		<a href="index.html" class="btn">Back To Search</a>
-		</div>
 	</div>`;
 }
 
