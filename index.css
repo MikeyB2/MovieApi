@@ -73,12 +73,14 @@
 * {
     box-sizing: border-box;
     text-align: center;
+    background: black;
 }
 
 .header {
     margin: 20px 50px;
     padding: 20px;
     border: solid 2px black;
+    background: whitesmoke;
 }
 
 footer {
