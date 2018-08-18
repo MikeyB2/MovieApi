@@ -41,7 +41,7 @@ function returnResults(movie) {
 					<a class="card-image" onclick="movieSelected('${
 		movie.imdbID
 		}')" href="#"><img src="${movie.Poster}"></a>
-                <h3>${movie.Title}</h3>
+                <h3 class="mainTitle">${movie.Title}</h3>
 								<a onclick="movieSelected('${
 		movie.imdbID
 		}', '${movie.Title}')" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
