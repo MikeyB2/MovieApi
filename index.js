@@ -83,6 +83,7 @@ function movieDetailResults(movie) {
   <div class="details-card">
     <img src="${movieDetail.Poster}" class="thumbnail">
   </div>
+  </div>
   <div class="details-list">
 		<h2>${movieDetail.Title}</h2>
 		<div class="plot-row">
@@ -93,6 +94,7 @@ function movieDetailResults(movie) {
     
   </div>
 </div>
+<div class="detail-row-group">
     <ul class="list-group">
       <li class="list-group-item"><strong>IMDB Rating:</strong> ${
 		movieDetail.imdbRating
@@ -134,8 +136,8 @@ function movieDetailResults(movie) {
 		movieDetail.imdbID
 		}" target="_blank" class="btn">View IMDB</a>
     <a href="index.html" class="btn">Back To Search</a>
-	</div>
 	
+	</div>
 </div>
 
 `;

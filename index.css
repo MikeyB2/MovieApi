@@ -1,5 +1,4 @@
-#movies img,
-#movie img {
+#movies img {
     width: 100%;
     /* 100% of container*/
 }
@@ -35,6 +34,20 @@
     }
 }
 
+@media (min-width: 450px) {
+    .details-card img {
+        width: 220px;
+        height: 100%;
+    }
+}
+
+@media (min-width: 590px) {
+    .details-card img {
+        width: 320px;
+        height: 100%;
+    }
+}
+
 @media (min-width: 768px) {
     .container {
         height: 100%;
@@ -66,19 +79,22 @@
     }
     .btn-group {
         margin: 20px;
-        display: flex;
+    }
+    .details-card img {
+        width: 500px;
+        height: 100%;
     }
 }
 
 * {
     box-sizing: border-box;
-    text-align: center;
     font-family: 'Sawarabi Gothic', sans-serif;
 }
 
 .header {
     margin: 20px 50px;
     padding: 20px;
+    text-align: center;
 }
 
 .header h1 {
@@ -110,6 +126,7 @@ footer {
 .container {
     height: 100%;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .column {
@@ -192,6 +209,7 @@ ul {
 
 .detail-row {
     display: inline-block;
+    text-align: left;
 }
 
 .details-card {
@@ -199,21 +217,22 @@ ul {
     height: auto;
 }
 
-.details-card img {
+/* .details-card img {
     width: 450px;
     height: 100%;
-}
-
-.details-list {
-    text-align: start;
-}
+} */
 
 .btn-group {
     margin: 20px;
+    text-align: center;
 }
 
 #ytPlayer {
     width: 700px;
     height: 500px;
-    ;
+}
+
+.list-group {
+    text-align: justify;
+    word-wrap: normal;
 }
