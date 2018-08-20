@@ -30,21 +30,21 @@ function dataMovies(data) {
 }
 
 function displayMovies(data) {
+	console.log(data);
 	let movie = returnResults(data);
 	return movie;
 }
 
 function returnResults(movie) {
-	movie.Title.replace("'", "").replace("#", "").replace(";", "");
 	return `
           <div class="column">
 					<a class="card-image" onclick="movieSelected('${
 		movie.imdbID
 		}')" href="#"><img src="${movie.Poster}"></a>
                 <h3 class="mainTitle">${movie.Title}</h3>
-								<a onclick="movieSelected('${
+								<a onclick="movieSelected(&quot;${
 		movie.imdbID
-		}', '${movie.Title}')" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
+		}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
 								<a onclick="youtubeTrailer('${
 		movie.Title
 		} Trailer')" class="btn trailer gridBtn" href="#">Watch Trailer</a>
@@ -81,7 +81,9 @@ function movieDetailResults(movie) {
 	return `
 <div class="detail-row">
   <div class="details-card">
-    <img src="${movieDetail.Poster}" class="thumbnail">
+    <a onclick="youtubeTrailer('${
+		movie.Title
+		} Trailer')"><img src="${movieDetail.Poster}" class="thumbnail"></a>
   </div>
   </div>
   <div class="details-list">
@@ -175,7 +177,7 @@ function trailerResults(trailer) {
 	console.log(trailerDetail);
 	console.log(trailerDetail.items[0].id.videoId);
 	return `
-	<div class="detail-row video">
+	<div class="detail-row-video">
 		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
