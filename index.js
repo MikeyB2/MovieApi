@@ -37,7 +37,7 @@ function returnResults(movie) {
           <div class="column">
 					<a class="card-image" onclick="movieSelected('${
 		movie.imdbID
-		}')" href="#"><img src="${movie.Poster}"></a>
+		}')" href="#"><img alt="${movie.Title}" src="${movie.Poster}"></a>
                 <h3 class="mainTitle">${movie.Title}</h3>
 								<a onclick="movieSelected(&quot;${
 		movie.imdbID
@@ -80,14 +80,14 @@ function movieDetailResults(movie) {
   <div class="details-card">
     <a onclick="youtubePoster('${
 		movie.Title
-		} Trailer')" href="#" id="ytTrailer"><img src="${movieDetail.Poster}" class="thumbnail"></a>
+		} Trailer')" href="#" id="ytTrailer" aria-disabled="false" aria-haspopup="true" aria-label="${movieDetail.Title}"><img alt="${movieDetail.Title}" src="${movieDetail.Poster}" class="thumbnail"></a>
   </div>
   </div>
   <div class="details-list">
-		<h2>${movieDetail.Title}</h2>
+		<h1>${movieDetail.Title}</h1>
 		<div class="plot-row">
   <div class="plot">
-    <h3>Plot</h3>
+    <h2>Plot</h2>
     <p>${movieDetail.Plot}</p>
     <hr>
   </div>
@@ -172,7 +172,9 @@ function trailerResults(trailer) {
 	console.log(trailerDetail.items[0].id.videoId);
 	return `
 	<div class="detail-row-video">
-		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
+		<iframe  title="${
+			trailerDetail.items[0].snippet.title
+			}" aria-disabled="false" aria-haspopup="true" id="ytplayer" type="text/html" width="700px" height="500px" arial-label="Movie Trailer"  src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
@@ -213,7 +215,7 @@ function posterTrailerResults(trailer) {
 	console.log(posterTrailerDetail.items[0].id.videoId);
 	return `
 	<div class="detail-row-video">
-		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
+		<iframe title="Movie Trailer" arial-label="Movie Trailer" id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
 			posterTrailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
