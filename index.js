@@ -21,38 +21,53 @@ function getDataForMovies(searchText, callback) {
 }
 
 function dataMovies(data) {
-	console.log('test');
 	const movie = data.Search.map((item, index) => displayMovies(item));
 	$('#movies').html(movie);
 }
 
 function displayMovies(data) {
-	console.log(data);
 	let movie = returnResults(data);
 	return movie;
 }
 
 function returnResults(movie) {
-	return `
+	let moviePoster = movie.Poster;
+	if (moviePoster == 'N/A') {
+		return `
+		<div class="column">
+				  <a class="card-image" onclick="movieSelected('${
+			movie.imdbID
+			}')" href="#"><img alt="${movie.Title}" src="https://thumb1.shutterstock.com/display_pic_with_logo/3167420/604160846/stock-vector-movie-poster-or-flyer-template-online-cinema-background-with-film-reel-and-clapper-board-vector-604160846.jpg"></a>
+			  <h3 class="mainTitle">${movie.Title}</h3>
+							  <a onclick="movieSelected(&quot;${
+			movie.imdbID
+			}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
+							  <a onclick="youtubeTrailer('${
+			movie.Title
+			} Trailer')" class="btn movieDetailScreen gridBtn" href="#">Watch Trailer</a>
+		</div>
+  `;
+	} else {
+		return `
           <div class="column">
 					<a class="card-image" onclick="movieSelected('${
-		movie.imdbID
-		}')" href="#"><img alt="${movie.Title}" src="${movie.Poster}"></a>
+			movie.imdbID
+			}')" href="#"><img alt="${movie.Title}" src="${movie.Poster}"></a>
                 <h3 class="mainTitle">${movie.Title}</h3>
 								<a onclick="movieSelected(&quot;${
-		movie.imdbID
-		}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
+			movie.imdbID
+			}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
 								<a onclick="youtubeTrailer('${
-		movie.Title
-		} Trailer')" class="btn movieDetailScreen gridBtn" href="#">Watch Trailer</a>
+			movie.Title
+			} Trailer')" class="btn movieDetailScreen gridBtn" href="#">Watch Trailer</a>
           </div>
-    `;
+	`;
+	}
 }
 
 ///////////////////Get Detail of selected movie///////////////////////////
 
 function movieSelected(id, title) {
-	console.log(id, title);
 	sessionStorage.setItem('movieId', id); //stores id locally in application tab session storage
 	sessionStorage.setItem('movieTitle', title);
 	window.location = 'movie.html';
@@ -141,16 +156,13 @@ function movieDetailResults(movie) {
 
 ///////////////////Get Movie Trailer///////////////////////////
 function youtubeTrailer(title) {
-	console.log(title);
 	sessionStorage.setItem("trailerText", title); //stores id locally in application tab session storage
-	console.log(title);
 	getTrailer();
 	return false;
 }
 
 function getTrailer() {
 	let trailer = sessionStorage.getItem("trailerText");
-	console.log('test', trailer);
 	const trailerQuery = {
 		part: 'snippet',
 		key: 'AIzaSyDbDK_yKzFivQBrkukDw3lwBVsFgdDUmNY',
@@ -161,20 +173,17 @@ function getTrailer() {
 }
 
 function trailerLink(data) {
-	console.log('trailer data');
 	const detailOfTrailer = trailerResults(data);
 	$('#movies').html(detailOfTrailer);
 }
 
 function trailerResults(trailer) {
 	let trailerDetail = trailer;
-	console.log(trailerDetail);
-	console.log(trailerDetail.items[0].id.videoId);
 	return `
 	<div class="detail-row-video">
 		<iframe  title="${
-			trailerDetail.items[0].snippet.title
-			}" aria-disabled="false" aria-haspopup="true" id="ytplayer" type="text/html" width="700px" height="500px" arial-label="Movie Trailer"  src="https://www.youtube.com/embed/${
+		trailerDetail.items[0].snippet.title
+		}" aria-disabled="false" aria-haspopup="true" id="ytplayer" type="text/html" width="700px" height="500px" arial-label="Movie Trailer"  src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
@@ -183,17 +192,13 @@ function trailerResults(trailer) {
 
 /////////////////////Poster Trailer////////////////////////////////////////////////
 function youtubePoster(title) {
-	// this.classList.add('flip');
-	console.log(title);
 	sessionStorage.setItem("trailerText", title); //stores id locally in application tab session storage
-	console.log(title);
 	getPosterTrailer();
 	return false;
 }
 
 function getPosterTrailer() {
 	let posterTrailer = sessionStorage.getItem("trailerText");
-	console.log('test', posterTrailer);
 	const posterTrailerQuery = {
 		part: 'snippet',
 		key: 'AIzaSyDbDK_yKzFivQBrkukDw3lwBVsFgdDUmNY',
@@ -204,19 +209,16 @@ function getPosterTrailer() {
 }
 
 function posterTrailerLink(data) {
-	console.log('trailer data');
 	const detailOfPosterTrailer = posterTrailerResults(data);
 	$('#ytTrailer').html(detailOfPosterTrailer);
 }
 
 function posterTrailerResults(trailer) {
 	let posterTrailerDetail = trailer;
-	console.log(posterTrailerDetail);
-	console.log(posterTrailerDetail.items[0].id.videoId);
 	return `
 	<div class="detail-row-video">
 		<iframe title="Movie Trailer" arial-label="Movie Trailer" id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
-			posterTrailerDetail.items[0].id.videoId
+		posterTrailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
 	</div>`;
