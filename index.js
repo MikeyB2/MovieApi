@@ -90,12 +90,14 @@ function detailedMovie(data) {
 
 function movieDetailResults(movie) {
 	let movieDetail = movie;
-	return `
+	let moviePoster = movie.Poster;
+	if (moviePoster == 'N/A') {
+		return `
 <div class="detail-row">
   <div class="details-card">
     <a onclick="youtubePoster('${
-		movie.Title
-		} Trailer')" href="#" id="ytTrailer" aria-disabled="false" aria-haspopup="true" aria-label="${movieDetail.Title}"><img alt="${movieDetail.Title}" src="${movieDetail.Poster}" class="thumbnail"></a>
+			movie.Title
+			} Trailer')" href="#" id="ytTrailer" aria-disabled="false" aria-haspopup="true" aria-label="${movieDetail.Title}"><img alt="${movieDetail.Title}" src="https://thumb1.shutterstock.com/display_pic_with_logo/3167420/604160846/stock-vector-movie-poster-or-flyer-template-online-cinema-background-with-film-reel-and-clapper-board-vector-604160846.jpg" class="thumbnail"></a>
   </div>
   </div>
   <div class="details-list">
@@ -110,48 +112,113 @@ function movieDetailResults(movie) {
 <div class="detail-row-group">
     <ul class="list-group">
       <li class="list-group-item"><strong>IMDB Rating:</strong> ${
-		movieDetail.imdbRating
-		}</li>
+			movieDetail.imdbRating
+			}</li>
       <li class="list-group-item"><strong>Type:</strong> ${
-		movieDetail.Type
-		}</li>
+			movieDetail.Type
+			}</li>
       <li class="list-group-item"><strong>Run Time:</strong> ${
-		movieDetail.Runtime
-		}</li>
+			movieDetail.Runtime
+			}</li>
       <li class="list-group-item"><strong>Genre:</strong> ${
-		movieDetail.Genre
-		}</li>
+			movieDetail.Genre
+			}</li>
       <li class="list-group-item"><strong>Released:</strong> ${
-		movieDetail.Released
-		}</li>
+			movieDetail.Released
+			}</li>
       <li class="list-group-item"><strong>Rated:</strong> ${
-		movieDetail.Rated
-		}</li>
+			movieDetail.Rated
+			}</li>
       <li class="list-group-item"><strong>Director:</strong> ${
-		movieDetail.Director
-		}</li>
+			movieDetail.Director
+			}</li>
       <li class="list-group-item"><strong>Writer:</strong> ${
-		movieDetail.Writer
-		}</li>
+			movieDetail.Writer
+			}</li>
       <li class="list-group-item"><strong>Actors:</strong> ${
-		movieDetail.Actors
-		}</li>
+			movieDetail.Actors
+			}</li>
       <li class="list-group-item"><strong>Awards:</strong> ${
-		movieDetail.Awards
-		}</li>
+			movieDetail.Awards
+			}</li>
       <li class="list-group-item"><strong>Box Office:</strong> ${
-		movieDetail.BoxOffice
-		}</li>
+			movieDetail.BoxOffice
+			}</li>
 		</ul>
 		<hr>
 		<div class="btn-group">
 	<a href="http://imdb.com/title/${
-		movieDetail.imdbID
-		}" target="_blank" class="btn">View IMDB</a>
+			movieDetail.imdbID
+			}" target="_blank" class="btn">View IMDB</a>
     <a href="index.html" class="btn">Back To Search</a>
 	</div>
 </div>
 `;
+
+	} else {
+		return `
+<div class="detail-row">
+  <div class="details-card">
+    <a onclick="youtubePoster('${
+			movie.Title
+			} Trailer')" href="#" id="ytTrailer" aria-disabled="false" aria-haspopup="true" aria-label="${movieDetail.Title}"><img alt="${movieDetail.Title}" src="${movieDetail.Poster}" class="thumbnail"></a>
+  </div>
+  </div>
+  <div class="details-list">
+		<h1>${movieDetail.Title}</h1>
+		<div class="plot-row">
+  <div class="plot">
+    <h2>Plot</h2>
+    <p>${movieDetail.Plot}</p>
+    <hr>
+  </div>
+</div>
+<div class="detail-row-group">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>IMDB Rating:</strong> ${
+			movieDetail.imdbRating
+			}</li>
+      <li class="list-group-item"><strong>Type:</strong> ${
+			movieDetail.Type
+			}</li>
+      <li class="list-group-item"><strong>Run Time:</strong> ${
+			movieDetail.Runtime
+			}</li>
+      <li class="list-group-item"><strong>Genre:</strong> ${
+			movieDetail.Genre
+			}</li>
+      <li class="list-group-item"><strong>Released:</strong> ${
+			movieDetail.Released
+			}</li>
+      <li class="list-group-item"><strong>Rated:</strong> ${
+			movieDetail.Rated
+			}</li>
+      <li class="list-group-item"><strong>Director:</strong> ${
+			movieDetail.Director
+			}</li>
+      <li class="list-group-item"><strong>Writer:</strong> ${
+			movieDetail.Writer
+			}</li>
+      <li class="list-group-item"><strong>Actors:</strong> ${
+			movieDetail.Actors
+			}</li>
+      <li class="list-group-item"><strong>Awards:</strong> ${
+			movieDetail.Awards
+			}</li>
+      <li class="list-group-item"><strong>Box Office:</strong> ${
+			movieDetail.BoxOffice
+			}</li>
+		</ul>
+		<hr>
+		<div class="btn-group">
+	<a href="http://imdb.com/title/${
+			movieDetail.imdbID
+			}" target="_blank" class="btn">View IMDB</a>
+    <a href="index.html" class="btn">Back To Search</a>
+	</div>
+</div>
+`;
+	}
 }
 
 ///////////////////Get Movie Trailer///////////////////////////
