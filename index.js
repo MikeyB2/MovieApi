@@ -13,15 +13,12 @@ function watchSubmit() {
 	});
 }
 
-
-
 function getDataForMovies(searchText, callback) {
 	const query = {
 		s: `${searchText}`,
 	};
 	$.getJSON(movie_SEARCH_URL, query, callback);
 }
-
 
 function dataMovies(data) {
 	console.log('test');
@@ -47,7 +44,7 @@ function returnResults(movie) {
 		}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
 								<a onclick="youtubeTrailer('${
 		movie.Title
-		} Trailer')" class="btn trailer gridBtn" href="#">Watch Trailer</a>
+		} Trailer')" class="btn movieDetailScreen gridBtn" href="#">Watch Trailer</a>
           </div>
     `;
 }
@@ -81,9 +78,9 @@ function movieDetailResults(movie) {
 	return `
 <div class="detail-row">
   <div class="details-card">
-    <a onclick="youtubeTrailer('${
+    <a onclick="youtubePoster('${
 		movie.Title
-		} Trailer')"><img src="${movieDetail.Poster}" class="thumbnail"></a>
+		} Trailer')" href="#" id="ytTrailer"><img src="${movieDetail.Poster}" class="thumbnail"></a>
   </div>
   </div>
   <div class="details-list">
@@ -91,9 +88,8 @@ function movieDetailResults(movie) {
 		<div class="plot-row">
   <div class="plot">
     <h3>Plot</h3>
-    ${movieDetail.Plot}
+    <p>${movieDetail.Plot}</p>
     <hr>
-    
   </div>
 </div>
 <div class="detail-row-group">
@@ -138,10 +134,8 @@ function movieDetailResults(movie) {
 		movieDetail.imdbID
 		}" target="_blank" class="btn">View IMDB</a>
     <a href="index.html" class="btn">Back To Search</a>
-	
 	</div>
 </div>
-
 `;
 }
 
@@ -180,6 +174,47 @@ function trailerResults(trailer) {
 	<div class="detail-row-video">
 		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
+		}?autoplay=1" frameborder='0'>
+		</iframe>
+	</div>`;
+}
+
+/////////////////////Poster Trailer////////////////////////////////////////////////
+function youtubePoster(title) {
+	// this.classList.add('flip');
+	console.log(title);
+	sessionStorage.setItem("trailerText", title); //stores id locally in application tab session storage
+	console.log(title);
+	getPosterTrailer();
+	return false;
+}
+
+function getPosterTrailer() {
+	let posterTrailer = sessionStorage.getItem("trailerText");
+	console.log('test', posterTrailer);
+	const posterTrailerQuery = {
+		part: 'snippet',
+		key: 'AIzaSyDbDK_yKzFivQBrkukDw3lwBVsFgdDUmNY',
+		// AIzaSyBiFe0gSq_xIil6nwieRBdNbOuaI69AFnk created new key
+		q: posterTrailer
+	};
+	$.getJSON(YOUTUBE_Trailer_URL, posterTrailerQuery, posterTrailerLink);
+}
+
+function posterTrailerLink(data) {
+	console.log('trailer data');
+	const detailOfPosterTrailer = posterTrailerResults(data);
+	$('#ytTrailer').html(detailOfPosterTrailer);
+}
+
+function posterTrailerResults(trailer) {
+	let posterTrailerDetail = trailer;
+	console.log(posterTrailerDetail);
+	console.log(posterTrailerDetail.items[0].id.videoId);
+	return `
+	<div class="detail-row-video">
+		<iframe id="ytplayer" type="text/html" width="700px" height="500px" src="https://www.youtube.com/embed/${
+			posterTrailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>
 	</div>`;

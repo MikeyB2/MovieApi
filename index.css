@@ -1,21 +1,19 @@
-
-    /* 100% of container*/
-
-
 @media (max-width: 455px) {
     * {
         font-size: 12px;
         text-align: left;
     }
-
-    .header input {
+    .header h1 {
+        font-size: 40px;
+    }
+    .description input {
         width: 100%;
         height: 40px;
         border-radius: 5px;
-        font-size: 12px;
+        font-size: 14px;
         display: block;
+        color: black;
     }
-
     #movie img {
         height: 100%;
         float: none;
@@ -25,55 +23,124 @@
     }
     #movies .col-md-3 img {
         height: 240px;
+        width: 100%;
+    }
+    .plot p {
+        font-size: 20px;
     }
     .btn {
-        border: 1px solid whitesmoke;
-        border-radius: 5px;
-        background: #D6E3E0;
         text-decoration: none;
-        color: black;
         width: 100%;
-        height: 100%;
         font-size: 16px;
         display: block;
+        border: 1px solid whitesmoke;
+        border-radius: 5px;
+        background: #000000;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
     }
-
     .video {
         width: 320px;
+    }
+    .column {
+        height: 100%;
+        width: 200px;
+        background: whitesmoke;
+    }
+    .card-image img {
+        width: 100px;
     }
 }
 
 @media (min-width: 455px) {
+    .header h1 {
+        font-size: 60px;
+    }
     .details-card img {
         width: 320px;
         height: 100%;
     }
     .btn {
-        border: 1px solid blue;
+        border: 1px solid whitesmoke;
         border-radius: 5px;
-        background: #D6E3E0;
+        background: #000000;
         text-decoration: none;
-        color: black;
+        color: white;
+        margin: 15px;
+        padding: 5px;
     }
     .btn-group {
         margin: 20px;
         text-align: center;
     }
-
     #movies img {
         width: 100%;
         border-radius: 10px;
+    }
+    .description input {
+        width: 100%;
+        border-radius: 5px;
+        font-size: 20px;
+        color: black;
+    }
+    .column {
+        display: inline-block;
+        margin: 5px;
+        text-align: center;
+        border: solid 2px black;
+        border-radius: 10px;
+        width: 320px;
+        height: 530px;
+        line-height: 12px;
+        background: whitesmoke;
+    }
+    .searchBtn {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .plot p {
+        font-size: 18px;
     }
 }
 
 @media (min-width: 590px) {
-    .details-card img {
-        width: 320px;
-        height: 100%;
-    }
-    #movies img {
+    .description input {
         width: 100%;
+        border-radius: 5px;
+        font-size: 20px;
+        color: black;
+    }
+    .btn {
+        border: 1px solid whitesmoke;
+        border-radius: 5px;
+        background: #000000;
+        text-decoration: none;
+        color: white;
+        margin: 15px;
+        padding: 5px;
+    }
+    .column {
+        display: inline-block;
+        margin: 5px;
+        text-align: center;
+        border: solid 2px black;
         border-radius: 10px;
+        width: 320px;
+        height: 530px;
+        line-height: 12px;
+        background: whitesmoke;
+    }
+    .detail-row-video {
+        display: inline-block;
+        width: 100%;
+    }
+    .searchBtn {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
     }
 }
 
@@ -94,23 +161,22 @@
         height: 150px;
     }
     .btn {
-        border: 1px solid blue;
+        border: 1px solid whitesmoke;
         border-radius: 5px;
         background: #000000;
         text-decoration: none;
         color: white;
-        
-    margin: 15px;
+        margin: 15px;
+        padding: 5px;
     }
     .btn:hover {
         background: rgb(80, 81, 82);
     }
-    .video {
+    .description input {
         width: 100%;
-    }
-    .header input {
         border-radius: 5px;
         font-size: 20px;
+        color: black;
     }
     .btn-group {
         margin: 20px;
@@ -119,16 +185,53 @@
         width: 500px;
         height: 100%;
     }
+    .column {
+        display: inline-block;
+        margin: 5px;
+        text-align: center;
+        border: solid 2px black;
+        border-radius: 10px;
+        width: 320px;
+        height: 530px;
+        line-height: 12px;
+        background: whitesmoke;
+    }
+    .detail-row-video {
+        display: inline-block;
+        width: 100%;
+    }
+    .searchBtn {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 875px) {
+    .detail-row-video {
+        width: 100%;
+    }
+    .description input {
+        width: 750px;
+        border-radius: 5px;
+        font-size: 20px;
+        color: black;
+    }
+    .searchBtn {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+    }
 }
 
 * {
     box-sizing: border-box;
     font-family: 'Sawarabi Gothic', sans-serif;
     color: whitesmoke;
-    
 }
+
 body {
-    background: url(http://getreelcinemas.com/wp-content/uploads/2015/02/Background-Narrow.jpg) no-repeat;
+    background: url(http://getreelcinemas.com/wp-content/uploads/2015/02/Background-Narrow.jpg);
     background-size: cover;
 }
 
@@ -137,12 +240,6 @@ body {
     padding: 20px;
     text-align: center;
 }
-
-.header h1 {
-    font-size: 60px;
-}
-
-
 
 .header a {
     text-decoration: none;
@@ -166,18 +263,6 @@ body {
     text-align: center;
 }
 
-.column {
-    display: inline-block;
-    margin: 5px;
-    text-align: center;
-    border: solid 2px black;
-    border-radius: 10px;
-    width: 320px;
-    height: 530px;
-    line-height: 12px;
-    background: whitesmoke;
-}
-
 .column img {
     height: 444px;
     width: 300px;
@@ -198,22 +283,9 @@ body {
     word-wrap: break-word;
 }
 
-.btn {
-    border: 1px solid whitesmoke;
-    padding: 5px;
-    border-radius: 5px;
-    background: #000000;
-    text-decoration: none;
-    color: white;
-}
-
 .btn:hover {
     background: rgb(80, 81, 82);
     border: solid 2px red;
-}
-
-.gridBtn {
-    margin: 15px;
 }
 
 #movies {
@@ -242,6 +314,10 @@ ul {
 
 .thumbnail {
     float: left;
+}
+
+.thumbnail:hover {
+    border: solid 2px red;
 }
 
 .detail-row {
