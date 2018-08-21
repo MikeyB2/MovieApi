@@ -250,7 +250,7 @@ function trailerResults(trailer) {
 	<div class="detail-row-video">
 		<iframe  title="${
 		trailerDetail.items[0].snippet.title
-		}" aria-disabled="false" aria-haspopup="true" id="ytplayer" type="text/html" width="700px" height="500px" arial-label="Movie Trailer"  src="https://www.youtube.com/embed/${
+		}" aria-disabled="false" aria-haspopup="true" id="ytplayer" type="text/html" width="100%" height="450px" arial-label="Movie Trailer"  src="https://www.youtube.com/embed/${
 		trailerDetail.items[0].id.videoId
 		}?autoplay=1" frameborder='0'>
 		</iframe>

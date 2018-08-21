@@ -1,7 +1,10 @@
 @media (max-width: 455px) {
     * {
         font-size: 12px;
-        text-align: left;
+    }
+    .header {
+        margin: 20px 50px;
+        text-align: center;
     }
     .header h1 {
         font-size: 40px;
@@ -13,6 +16,10 @@
         font-size: 14px;
         display: block;
         color: black;
+    }
+    #movies {
+        padding: 20px;
+        margin-bottom: 10px;
     }
     #movie img {
         height: 100%;
@@ -45,18 +52,38 @@
         width: 320px;
     }
     .column {
-        height: 100%;
-        width: 200px;
+        display: inline-block;
+        text-align: center;
+        border: solid 2px black;
+        border-radius: 10px;
+        width: 100%;
+        line-height: 12px;
         background: whitesmoke;
     }
-    .card-image img {
-        width: 100px;
+    .column img {
+        height: 444px;
+        width: 100%;
+        border-radius: 10px;
+    }
+    .movie-container {
+        margin: 0;
+    }
+    .thumbnail {
+        width: 220px;
     }
 }
 
 @media (min-width: 455px) {
+    .header {
+        margin: 20px 50px;
+        text-align: center;
+    }
     .header h1 {
         font-size: 60px;
+    }
+    #movies {
+        margin: 20px 50px;
+        padding: 20px;
     }
     .details-card img {
         width: 320px;
@@ -96,6 +123,10 @@
         line-height: 12px;
         background: whitesmoke;
     }
+    .column img {
+        height: 444px;
+        width: 300px;
+    }
     .searchBtn {
         width: 100px;
         height: 40px;
@@ -103,6 +134,9 @@
     }
     .plot p {
         font-size: 18px;
+    }
+    .movie-container {
+        margin: 20px 50px;
     }
 }
 
@@ -121,6 +155,10 @@
         color: white;
         margin: 15px;
         padding: 5px;
+    }
+    #movies {
+        margin: 20px 50px;
+        padding: 20px;
     }
     .column {
         display: inline-block;
@@ -142,9 +180,16 @@
         height: 40px;
         font-size: 20px;
     }
+    .column img {
+        height: 444px;
+        width: 300px;
+    }
 }
 
 @media (min-width: 768px) {
+    #movies {
+        padding: 20px;
+    }
     .container {
         height: 100%;
         margin-bottom: 20px;
@@ -196,6 +241,10 @@
         line-height: 12px;
         background: whitesmoke;
     }
+    .column img {
+        height: 444px;
+        width: 300px;
+    }
     .detail-row-video {
         display: inline-block;
         width: 100%;
@@ -208,6 +257,10 @@
 }
 
 @media (min-width: 875px) {
+    #movies {
+        margin: 20px 50px;
+        padding: 20px;
+    }
     .detail-row-video {
         width: 100%;
     }
@@ -222,6 +275,10 @@
         height: 40px;
         font-size: 20px;
     }
+    .column img {
+        height: 444px;
+        width: 300px;
+    }
 }
 
 * {
@@ -233,12 +290,6 @@
 body {
     background: url(http://getreelcinemas.com/wp-content/uploads/2015/02/Background-Narrow.jpg);
     background-size: cover;
-}
-
-.header {
-    margin: 20px 50px;
-    padding: 20px;
-    text-align: center;
 }
 
 .header a {
@@ -263,11 +314,6 @@ body {
     text-align: center;
 }
 
-.column img {
-    height: 444px;
-    width: 300px;
-}
-
 .column img:hover {
     border: solid 2px red;
 }
@@ -288,10 +334,6 @@ body {
     border: solid 2px red;
 }
 
-#movies {
-    margin: 20px 50px;
-    padding: 20px;
-}
 
 .row {
     padding: 20px;
@@ -306,10 +348,6 @@ body {
 
 ul {
     list-style-type: none;
-}
-
-.movie-container {
-    margin: 20px 50px;
 }
 
 .thumbnail {
