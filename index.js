@@ -41,7 +41,7 @@ function returnResults(movie) {
 			  <h3 class="mainTitle">${movie.Title}</h3>
 							  <a onclick="movieSelected(&quot;${
 			movie.imdbID
-			}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
+			}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Details</a>
 							  <a onclick="youtubeTrailer('${
 			movie.Title
 			} Trailer')" class="btn movieDetailScreen gridBtn" href="#">Watch Trailer</a>
@@ -56,7 +56,7 @@ function returnResults(movie) {
                 <h3 class="mainTitle">${movie.Title}</h3>
 								<a onclick="movieSelected(&quot;${
 			movie.imdbID
-			}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Movie Details</a>
+			}&quot;, &quot;${movie.Title}&quot;)" class="btn movieDetailScreen gridBtn" href="#">Details</a>
 								<a onclick="youtubeTrailer('${
 			movie.Title
 			} Trailer')" class="btn movieDetailScreen gridBtn" href="#">Watch Trailer</a>

@@ -2,6 +2,9 @@
     * {
         font-size: 12px;
     }
+    #logo {
+        width: 100%;
+    }
     .header {
         margin: 20px 50px;
         text-align: center;
@@ -77,6 +80,9 @@
     .header {
         margin: 20px 50px;
         text-align: center;
+    }
+    #logo {
+        width: 100%;
     }
     .header h1 {
         font-size: 60px;
@@ -187,6 +193,10 @@
 }
 
 @media (min-width: 768px) {
+    #logo {
+        width: 620px;
+        height: 170px;
+    }
     #movies {
         padding: 20px;
     }
@@ -333,7 +343,6 @@ body {
     background: rgb(80, 81, 82);
     border: solid 2px red;
 }
-
 
 .row {
     padding: 20px;
